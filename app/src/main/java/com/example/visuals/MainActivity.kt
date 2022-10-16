@@ -1,11 +1,53 @@
 package com.example.visuals
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.res.Resources
 import android.os.Bundle
+import android.widget.ImageView
+import androidx.appcompat.app.AppCompatActivity
+import com.example.visuals.databinding.ActivityMainBinding
+import kotlin.random.Random
 
 class MainActivity : AppCompatActivity() {
+
+    lateinit var binding: ActivityMainBinding
+
+    private val cats = listOf<Int>(
+        R.drawable.cat1,
+        R.drawable.cat2,
+        R.drawable.cat3,
+        R.drawable.cat4,
+        R.drawable.cat5,
+        R.drawable.cat6,
+        R.drawable.cat7,
+        R.drawable.cat8,
+        R.drawable.cat9,
+        R.drawable.cat10,
+        R.drawable.cat11,
+        R.drawable.cat12,
+        R.drawable.cat13,
+        R.drawable.cat14,
+        R.drawable.cat15,
+        R.drawable.cat16
+    )
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        //Main Task
+        var counter = 0
+        binding.dataToShow = counter.toString()
+
+        binding.button.setOnClickListener {
+            //Main Task
+            counter++
+            binding.dataToShow = counter.toString()
+
+            val randomIndex = Random.nextInt(cats.size)
+            binding.imageView.setImageResource(cats[randomIndex])
+
+        }
     }
 }
