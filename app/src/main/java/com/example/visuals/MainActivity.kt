@@ -1,15 +1,13 @@
 package com.example.visuals
 
-import android.content.res.Resources
 import android.os.Bundle
-import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.visuals.databinding.ActivityMainBinding
 import kotlin.random.Random
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var binding: ActivityMainBinding
+    private lateinit var binding: ActivityMainBinding
 
     private val cats = listOf<Int>(
         R.drawable.cat1,
@@ -36,17 +34,28 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //Main Task
+        /*Main Task
         var counter = 0
         binding.dataToShow = counter.toString()
 
         binding.button.setOnClickListener {
-            //Main Task
             counter++
             binding.dataToShow = counter.toString()
 
             val randomIndex = Random.nextInt(cats.size)
-            binding.imageView.setImageResource(cats[randomIndex])
+            binding.imageViewMine.setImageResource(cats[randomIndex])
+        } */
+
+        //Bonus Task
+        binding.dataToShow = binding.imageViewMine.resources
+            .getResourceEntryName(cats[0]).toString()
+
+        binding.button.setOnClickListener {
+            val randomIndex = Random.nextInt(cats.size)
+            binding.imageViewMine.setImageResource(cats[randomIndex])
+
+            binding.dataToShow = binding.imageViewMine.resources
+                .getResourceEntryName(cats[randomIndex]).toString()
 
         }
     }
