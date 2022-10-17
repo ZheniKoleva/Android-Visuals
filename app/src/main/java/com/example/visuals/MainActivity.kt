@@ -56,7 +56,6 @@ class MainActivity : AppCompatActivity() {
 
             binding.dataToShow = binding.imageViewMine.resources
                 .getResourceEntryName(cats[randomIndex]).toString()
-
         }
     }
 }
